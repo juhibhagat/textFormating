@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+        <script>
+            var rangeData;
+            var changeOption;
+            var colorValue ;
+          function rangeClick(){
+             rangeData = document.getElementById("inputRange").value;
+            document.getElementById("rChange").innerHTML=rangeData;
+          }
+          function selectChange(){
+            changeOption = document.getElementById("inputSelect").value;
+            document.getElementById("selectData").innerHTML =changeOption;
+          }
+          function colorChange(){
+            colorValue = document.getElementById("changeColor").value;
+            document.getElementById("changeHex").innerHTML=colorValue;
+          }
+            function btnApply(){
+                document.getElementById("changeText").style.fontSize= `${rangeData}px`;
+                document.getElementById("changeText").style.color=colorValue;
+                if(changeOption == "bold")
+            {
+                document.getElementById("changeText").style.fontWeight=changeOption;
+                document.getElementById("ChangeText").style.fontStyle="";
+            }
+
+            else if (changeOption=="italic"){
+                document.getElementById("changeText").style.fontStyle =changeOption;
+                document.getElementById("changeText").style.fontWeight="";
+            }
+
+            }
+        </script>
+</head>
+
+<body class="container-fluid">
+    <h2 class="text-center">Format Text</h2>
+    <div class="row border border-2 border-primary mt-4" style="height: 500px;">
+        <div class="col-md border border-2 border-dark ">
+            <div>
+                <label for="input-range" class="form-label">Select Font Size :</label>
+                <input type="range" value="1" id="inputRange" class="form-range" onclick="rangeClick()"  min="1" max="7">
+                <dilorv id="rChange"></dilorv>
+            </div>
+            <div class="mt-2">
+                <label for="input-co" class="form-label" >Select Font Color :</label>
+                <select class="form-select" id="inputSelect" onchange="selectChange()">
+                    <option value="select">Select</option>
+                    <option value="bold">Bold</option>
+                    <option value="italic">Italic</option>
+                </select>
+                <div id="selectData"></div>
+            </div>
+            <div class="mt-2 mb-2">
+                <label for="colorChange" class="form-label">Choose Font Color:</label>
+                <br>
+                <input type="color" class="form-control-color" onchange="colorChange()" id="changeColor"> 
+                <div id="changeHex"></div>
+            </div>
+            <div > 
+                <button class="btn btn-success w-100" onclick="btnApply()">Apply Change</button>
+            </div>
+        </div>
+        <div class="col-md border border-2 border-dark">
+            <p class="m-4 fs-4" id="changeText">Simple Text</p>
+
+        </div>
+    </div>
+</body>
+
+</html>
